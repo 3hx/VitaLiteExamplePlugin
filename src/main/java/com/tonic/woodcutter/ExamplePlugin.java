@@ -123,8 +123,6 @@ public class ExamplePlugin extends VitaPlugin
 
 
 
-
-
         if (InventoryAPI.getEmptySlots() > 24 && !BankAPI.isOpen()) {
             this.bank();
             return;
@@ -138,18 +136,12 @@ public class ExamplePlugin extends VitaPlugin
                 return;
 
             }
-        } else {
-            this.withdrawRequiredItems();
-            return;
-
-        }
-
-
-        if (InventoryAPI.contains("Molten glass")) {
+        } else if (InventoryAPI.contains("Molten glass")) {
             this.depositRequiredItems();
+        } else
+            this.withdrawRequiredItems();
         }
 
-        }
 
     public void bank() {
 
@@ -176,18 +168,18 @@ public class ExamplePlugin extends VitaPlugin
     }
 
     public void depositRequiredItems(){
-        if (BankAPI.isOpen()) {
+        if (!BankAPI.isOpen()) {
             this.bank();
+        }
 
-            if (BankAPI.isOpen()) {
-                BankAPI.deposit("Molten glass", 12);
-                //          Close bank
-                ClientScriptAPI.runScript(29);
-                ClientScriptAPI.closeNumericInputDialogue();
+        if (BankAPI.isOpen()) {
+            BankAPI.deposit("Molten glass", 17);
+            //          Close bank
+            ClientScriptAPI.runScript(29);
+            ClientScriptAPI.closeNumericInputDialogue();
 
             }
 
-        }
     }
 
 
