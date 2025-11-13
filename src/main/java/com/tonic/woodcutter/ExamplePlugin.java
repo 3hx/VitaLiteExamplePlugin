@@ -124,6 +124,7 @@ public class ExamplePlugin extends VitaPlugin
 
 
         if (InventoryAPI.getEmptySlots() > 24 && !BankAPI.isOpen()) {
+            Logger.console("here0");
             this.bank();
             return;
 
@@ -131,15 +132,25 @@ public class ExamplePlugin extends VitaPlugin
 
 
         if (InventoryAPI.count("Giant seaweed") == 2) {
-            if (SpellBook.getCurrent() ==  SpellBook.LUNAR) {
+            Logger.console("here1");
+
+            if (SpellBook.getCurrent() == SpellBook.LUNAR){
+                Logger.console("herex1");
                 MagicAPI.cast(Lunar.SUPERGLASS_MAKE);
+                Logger.console("herex2");
+
                 return;
 
             }
+
+
         } else if (InventoryAPI.contains("Molten glass")) {
+            Logger.console("here2");
+
             this.depositRequiredItems();
         } else
-            this.withdrawRequiredItems();
+            Logger.console("here3");
+        this.withdrawRequiredItems();
         }
 
 
